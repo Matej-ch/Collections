@@ -7,7 +7,7 @@ class FunctionTest extends TestCase
 {
 
     /** @test */
-    function map_returns_array_of_emails()
+    function it_returns_array_of_emails()
     {
         $users = $this->getTestModels();
 
@@ -21,7 +21,7 @@ class FunctionTest extends TestCase
     }
 
     /** @test */
-    function each_updates_every_item()
+    function it_updates_every_item()
     {
         $users = $this->getTestModels();
 
@@ -34,7 +34,7 @@ class FunctionTest extends TestCase
     }
 
     /** @test */
-    function filter_filters_specific_email()
+    function it_filters_specific_email()
     {
         $users = $this->getTestModels();
 
@@ -50,6 +50,34 @@ class FunctionTest extends TestCase
 
         $users = $this->getTestModels();
 
+        $rejected = \App\Functions::reject($users,static function ($user) {
+            return $user->email === 'abc@123.com';
+        });
+
+        $this->assertEquals([(object)['email' => 'test@mal.com']],$rejected);
+    }
+
+    /** @test */
+    function it_reduces_array() {
+        $users = $this->getTestModels();
+
+        $emailString = \App\Functions::reduce($users,static function ($emailString,$user) {
+            return $emailString . $user->email . ', ';
+        },'');
+
+        $this->assertEquals('test@mal.com, abc@123.com, ',$emailString);
+    }
+
+    /** @test */
+    function it_returns_sum_of_items_in_array() {
+
+        $items = [1,2,3,5,98,51,23,9];
+
+        $sum = \App\Functions::sum($items,static function ($item) {
+            return $item;
+        });
+
+        $this->assertEquals(192,$sum);
     }
 
     function getTestModels()
