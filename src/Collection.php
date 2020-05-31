@@ -46,6 +46,16 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
+    public function first($callback)
+    {
+
+    }
+
+    public function transpose()
+    {
+
+    }
+
     public function filter($callback)
     {
         return new static(array_filter($this->items,$callback));
@@ -64,6 +74,11 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
     public function sum()
     {
         return new static(array_sum($this->items));
+    }
+
+    public function contains($callback)
+    {
+
     }
 
     public function reverse()
