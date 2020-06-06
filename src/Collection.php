@@ -46,9 +46,25 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
-    public function first($callback)
+    public function first($callback = null,$default = null)
     {
+        if(empty($this->items) && $default) {
+            return $default;
+        }
 
+        if($callback) {
+            foreach ($this->items as $item) {
+                if($callback($item)) {
+                    return $item;
+                }
+            }
+            if($default) {
+                return $default;
+            }
+        }
+
+        $reversed = $this->reverse()->toArray();
+        return array_pop($reversed);
     }
 
     public function transpose()
