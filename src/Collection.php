@@ -41,9 +41,27 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
-    public function last()
+    public function last($callback = null,$default = null)
     {
+        if(empty($this->items) && $default) {
+            return $default;
+        }
 
+        if($callback) {
+
+            $reversed = array_reverse($this->items);
+            foreach ($reversed as $item) {
+                if($callback($item)) {
+                    return $item;
+                }
+            }
+
+            if($default) {
+                return $default;
+            }
+        }
+
+        return array_pop($this->items);
     }
 
     public function first($callback = null,$default = null)

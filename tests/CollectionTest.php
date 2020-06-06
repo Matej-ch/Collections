@@ -40,7 +40,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_first_value_of_collection()
+    function it_returns_first_element_of_collection()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -48,7 +48,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_null_for_first_element_if_collection_is_empty()
+    function it_returns_null_for_method_first_if_collection_is_empty()
     {
         $collection = Collection::make([]);
 
@@ -83,11 +83,54 @@ class CollectionTest extends TestCase
         },'default'));
     }
 
+    /** @test */
     function it_returns_last_element_of_collection()
     {
         $collection = Collection::make($this->getTestItems());
 
-        $this->assertEquals($this->getTestItems()[0],$collection->last());
+        $this->assertEquals((object)[
+            'value' => 8,
+            'email' => 'as5s52@test.com',
+            'info' => [
+                'price' => 0.256,
+                'pieces' => 5
+            ]
+        ],$collection->last());
+    }
+
+    /** @test */
+    function it_returns_null_for_method_last_if_collection_is_empty()
+    {
+        $collection = Collection::make([]);
+
+        $this->assertNull($collection->last());
+    }
+
+    /** @test */
+    function it_returns_default_value_for_method_last_if_is_set_and_collection_is_empty()
+    {
+        $collection = Collection::make([]);
+        $this->assertEquals('default',$collection->last(null,'default'));
+    }
+
+    /** @test */
+    function it_returns_last_value_for_matching_callback()
+    {
+        $collection = Collection::make(['one','sixtyNine','two']);
+
+        $this->assertEquals('sixtyNine',$collection->last(static function ($value){
+            return strlen($value) === 9;
+        }));
+    }
+
+    /** @test */
+    function it_returns_default_value_for_method_last_if_items_dont_satisfy_callback()
+    {
+        $collection = Collection::make(['one','sixtyNine','two']);
+
+        $this->assertEquals('default',$collection->last(static function ($value){
+            return strlen($value) > 69;
+        },'default'));
     }
 
     function getTestItems() {

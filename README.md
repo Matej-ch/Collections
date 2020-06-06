@@ -1,1 +1,1 @@
-learning Higher order functions adn collections
+Learning Higher order functions and collections
