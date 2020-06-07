@@ -16,12 +16,12 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
         $this->items = $items;
     }
 
-    public static function make($items)
+    public static function make($items): Collection
     {
         return new static($items);
     }
 
-    public function map($callback)
+    public function map($callback): Collection
     {
         return new static(array_map($callback,$this->items));
     }
@@ -36,9 +36,24 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
-    public function flatten($callback)
+    public function flatten(): Collection
     {
+        return new static($this->flattenArray($this->items));
+    }
 
+    private function flattenArray($array): array
+    {
+        $result = [];
+
+        foreach ($array as $item) {
+            if (is_null($item)) {
+                continue;
+            }
+
+            $result = array_merge($result, is_array($item) ? $this->flattenArray($item) : [$item]);
+        }
+
+        return $result;
     }
 
     public function last($callback = null,$default = null)
@@ -90,22 +105,22 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
-    public function filter($callback)
+    public function filter($callback): Collection
     {
         return new static(array_filter($this->items,$callback));
     }
 
-    public function reject($callback)
+    public function reject($callback): Collection
     {
         return new static($this->filter($callback));
     }
 
-    public function reduce($callback,$init)
+    public function reduce($callback,$init): Collection
     {
         return new static(array_reduce($this->items,$callback,$init));
     }
 
-    public function sum()
+    public function sum(): Collection
     {
         return new static(array_sum($this->items));
     }
@@ -115,17 +130,17 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
-    public function reverse()
+    public function reverse(): Collection
     {
         return new static(array_reverse($this->items));
     }
 
-    public function values()
+    public function values(): Collection
     {
         return new static(array_values($this->items));
     }
 
-    public function keys()
+    public function keys(): Collection
     {
         return new static(array_keys($this->items));
     }

@@ -133,6 +133,14 @@ class CollectionTest extends TestCase
         },'default'));
     }
 
+    /** @test */
+    function it_returns_one_dimensional_array()
+    {
+        $collection = Collection::make([1, 2, [3, 4, 5, [6, 7], 8, 9,], 10, 11]);
+
+        $this->assertEquals(Collection::make([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]),$collection->flatten());
+    }
+
     function getTestItems() {
         return [
             (object)[
