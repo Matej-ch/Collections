@@ -100,9 +100,17 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
         return array_pop($reversed);
     }
 
-    public function transpose()
+    public function transpose(): Collection
     {
+        $isMultiDim = $this->isMultiDimension();
 
+        if($isMultiDim) {
+            $items = array_map(null,...$this->values()->toArray());
+        } else {
+            $items = array_map(static function (...$items) { return $items; }, $this->values()->toArray());
+        }
+
+        return new static($items);
     }
 
     public function filter($callback): Collection
@@ -182,5 +190,15 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
     public function getIterator()
     {
         return new \ArrayIterator($this->items);
+    }
+
+    private function isMultiDimension(): bool
+    {
+        foreach ($this->toArray() as $item) {
+            if(is_array($item)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

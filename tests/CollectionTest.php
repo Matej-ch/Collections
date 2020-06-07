@@ -149,6 +149,38 @@ class CollectionTest extends TestCase
         $this->assertEquals(Collection::make([]),$collection->flatten());
     }
 
+    /** @test */
+    function transpose_returns_matrix_with_flipped_rows_and_columns_for_1D()
+    {
+        $collection = Collection::make([1,2]);
+
+        $this->assertEquals(Collection::make([[1],[2]]),$collection->transpose());
+    }
+
+    /** @test */
+    function transpose_returns_matrix_with_flipped_rows_and_columns_for_2x2()
+    {
+        $collection = Collection::make([[1,2],[3,4]]);
+
+        $this->assertEquals(Collection::make([[1,3],[2,4]]),$collection->transpose());
+    }
+
+    /** @test */
+    function transpose_returns_matrix_with_flipped_rows_and_columns_for_2x3()
+    {
+        $collection = Collection::make([[1,2],[3,4],[5,6]]);
+
+        $this->assertEquals(Collection::make([[1,3,5],[2,4,6]]),$collection->transpose());
+    }
+
+    /** @test */
+    function transpose_returns_matrix_with_flipped_rows_and_columns_for_3x3()
+    {
+        $collection = Collection::make([[1,2,3],[4,5,6],[7,8,9]]);
+
+        $this->assertEquals(Collection::make([[1,4,7],[2,5,8],[3,6,9]]),$collection->transpose());
+    }
+
     function getTestItems() {
         return [
             (object)[
