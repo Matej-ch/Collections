@@ -191,6 +191,16 @@ class CollectionTest extends TestCase
             $collection->each(static function ($item) { return $item->email = 'updated@.com';}));
     }
 
+    /** @test */
+    function zip_funcion_zips_two_collections()
+    {
+        $collection1 = Collection::make([1, 2, 3, 4, 5]);
+
+        $collection2 = Collection::make([5, 6, 7, 8, 9]);
+
+        $this->assertEquals(Collection::make([[1,5],[2,6],[3,7],[4,8],[5,9]]),$collection1->zip($collection2));
+    }
+
     function getTestItems() {
         return [
             (object)[
