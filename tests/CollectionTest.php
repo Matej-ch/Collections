@@ -181,6 +181,16 @@ class CollectionTest extends TestCase
         $this->assertEquals(Collection::make([[1,4,7],[2,5,8],[3,6,9]]),$collection->transpose());
     }
 
+    /** @test */
+    function each_iterates_over_each_element_and_returns_updated_eamil()
+    {
+        $collection = Collection::make([(object)['value' => 2, 'email' => 'abc@test.com'], (object)['value' => 5, 'email' => 'zcxx@test.com']]);
+
+        $this->assertEquals(
+            Collection::make([(object)['value' => 2, 'email' => 'updated@.com'], (object)['value' => 5, 'email' => 'updated@.com']]),
+            $collection->each(static function ($item) { return $item->email = 'updated@.com';}));
+    }
+
     function getTestItems() {
         return [
             (object)[

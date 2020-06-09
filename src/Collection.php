@@ -26,9 +26,11 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
         return new static(array_map($callback,$this->items));
     }
 
-    public function each($callback)
+    public function each($callback): Collection
     {
+        array_walk($this->items,$callback);
 
+        return new static($this->items);
     }
 
     public function pluck($key)
