@@ -8,7 +8,7 @@ class CollectionTest extends TestCase
 {
 
     /** @test */
-    function it_returns_instance_of_collection()
+    public function it_returns_instance_of_collection()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -16,7 +16,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_item_array()
+    public function it_returns_item_array()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -24,7 +24,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_size_of_collection()
+    public function it_returns_size_of_collection()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -32,7 +32,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_size_of_collection_with_function()
+    public function it_returns_size_of_collection_with_function()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -40,7 +40,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_first_element_of_collection()
+    public function it_returns_first_element_of_collection()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -48,7 +48,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_null_for_method_first_if_collection_is_empty()
+    public function it_returns_null_for_method_first_if_collection_is_empty()
     {
         $collection = Collection::make([]);
 
@@ -56,14 +56,14 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_default_value_if_value_is_set_and_collection_is_empty()
+    public function it_returns_default_value_if_value_is_set_and_collection_is_empty()
     {
         $collection = Collection::make([]);
         $this->assertEquals('default',$collection->first(null,'default'));
     }
 
     /** @test */
-    function it_returns_first_value_for_matching_callback()
+    public function it_returns_first_value_for_matching_callback()
     {
 
         $collection = Collection::make(['one','two','sixtyNine']);
@@ -74,7 +74,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_default_value_if_items_dont_satisfy_callback()
+    public function it_returns_default_value_if_items_dont_satisfy_callback()
     {
         $collection = Collection::make(['one','two','sixtyNine']);
 
@@ -84,7 +84,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_last_element_of_collection()
+    public function it_returns_last_element_of_collection()
     {
         $collection = Collection::make($this->getTestItems());
 
@@ -99,7 +99,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_null_for_method_last_if_collection_is_empty()
+    public function it_returns_null_for_method_last_if_collection_is_empty()
     {
         $collection = Collection::make([]);
 
@@ -107,14 +107,14 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_default_value_for_method_last_if_is_set_and_collection_is_empty()
+    public function it_returns_default_value_for_method_last_if_is_set_and_collection_is_empty()
     {
         $collection = Collection::make([]);
         $this->assertEquals('default',$collection->last(null,'default'));
     }
 
     /** @test */
-    function it_returns_last_value_for_matching_callback()
+    public function it_returns_last_value_for_matching_callback()
     {
         $collection = Collection::make(['one','sixtyNine','two']);
 
@@ -124,7 +124,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function it_returns_default_value_for_method_last_if_items_dont_satisfy_callback()
+    public function it_returns_default_value_for_method_last_if_items_dont_satisfy_callback()
     {
         $collection = Collection::make(['one','sixtyNine','two']);
 
@@ -134,7 +134,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function flatten_returns_one_dimensional_array()
+    public function flatten_returns_one_dimensional_array()
     {
         $collection = Collection::make([1, 2, [3, 4, 5, [6, 7], 8, 9,], 10, 11]);
 
@@ -142,7 +142,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function flatten_returns_empty_collection_for_empty_input()
+    public function flatten_returns_empty_collection_for_empty_input()
     {
         $collection = Collection::make([]);
 
@@ -150,7 +150,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function transpose_returns_matrix_with_flipped_rows_and_columns_for_1D()
+    public function transpose_returns_matrix_with_flipped_rows_and_columns_for_1D()
     {
         $collection = Collection::make([1,2]);
 
@@ -158,7 +158,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function transpose_returns_matrix_with_flipped_rows_and_columns_for_2x2()
+    public function transpose_returns_matrix_with_flipped_rows_and_columns_for_2x2()
     {
         $collection = Collection::make([[1,2],[3,4]]);
 
@@ -166,7 +166,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function transpose_returns_matrix_with_flipped_rows_and_columns_for_2x3()
+    public function transpose_returns_matrix_with_flipped_rows_and_columns_for_2x3()
     {
         $collection = Collection::make([[1,2],[3,4],[5,6]]);
 
@@ -174,7 +174,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function transpose_returns_matrix_with_flipped_rows_and_columns_for_3x3()
+    public function transpose_returns_matrix_with_flipped_rows_and_columns_for_3x3()
     {
         $collection = Collection::make([[1,2,3],[4,5,6],[7,8,9]]);
 
@@ -182,7 +182,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function each_iterates_over_each_element_and_returns_updated_eamil()
+    public function each_iterates_over_each_element_and_returns_updated_eamil()
     {
         $collection = Collection::make([(object)['value' => 2, 'email' => 'abc@test.com'], (object)['value' => 5, 'email' => 'zcxx@test.com']]);
 
@@ -192,7 +192,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function zip_funcion_zips_collection_items_with_array()
+    public function zip_funcion_zips_collection_items_with_array()
     {
         $collection1 = Collection::make([1, 2, 3, 4, 5]);
 
@@ -200,7 +200,7 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function zip_funcion_zips_collection_items_with_varaible_bumer_fo_arrays()
+    public function zip_funcion_zips_collection_items_with_varaible_bumer_fo_arrays()
     {
         $collection1 = Collection::make([1, 2, 3, 4, 5]);
 
