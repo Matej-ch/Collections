@@ -202,14 +202,30 @@ class CollectionTest extends TestCase
     /** @test */
     public function zip_funcion_zips_collection_items_with_varaible_bumer_fo_arrays()
     {
-        $collection1 = Collection::make([1, 2, 3, 4, 5]);
+        $collection = Collection::make([1, 2, 3, 4, 5]);
 
         $this->assertEquals
         (Collection::make([[1,5,'quak'],[2,6,'hack',],[3,7,'suck'],[4,8,'make'],[5,9,'kack']]),
-            $collection1->zip(
+            $collection->zip(
             [5, 6, 7, 8, 9],
             ['quak','hack','suck','make','kack']));
 
+    }
+
+    /** @test */
+    public function max_returns_maximum_value_of_given_key()
+    {
+        $collection = Collection::make($this->getTestItems());
+
+        $this->assertEquals(420,$collection->max('value'));
+    }
+
+    /** @test */
+    public function max_returns_maximum_value_for_key_for_collecion_of_simple_arrays()
+    {
+        $collection = Collection::make([['id' => 1],['id' =>  2],['id' => 69],['id' =>  3],['id' =>  4],['id' =>  5]]);
+
+        $this->assertEquals(69,$collection->max('id'));
     }
 
     function getTestItems() {

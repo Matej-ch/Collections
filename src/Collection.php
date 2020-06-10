@@ -38,6 +38,18 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
+    public function max($key)
+    {
+        $valuesForKey = array_map(static function ($item) use ($key) {
+            if(is_array($item)) {
+                return $item[$key];
+            }
+            return $item->$key;
+        },$this->items);
+
+        return max($valuesForKey);
+    }
+
     public function zip(...$arrays): Collection
     {
         return new static(array_map(null,$this->items,...$arrays));
