@@ -192,13 +192,24 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    function zip_funcion_zips_two_collections()
+    function zip_funcion_zips_collection_items_with_array()
     {
         $collection1 = Collection::make([1, 2, 3, 4, 5]);
 
-        $collection2 = Collection::make([5, 6, 7, 8, 9]);
+        $this->assertEquals(Collection::make([[1,5],[2,6],[3,7],[4,8],[5,9]]),$collection1->zip([5, 6, 7, 8, 9]));
+    }
 
-        $this->assertEquals(Collection::make([[1,5],[2,6],[3,7],[4,8],[5,9]]),$collection1->zip($collection2));
+    /** @test */
+    function zip_funcion_zips_collection_items_with_varaible_bumer_fo_arrays()
+    {
+        $collection1 = Collection::make([1, 2, 3, 4, 5]);
+
+        $this->assertEquals
+        (Collection::make([[1,5,'quak'],[2,6,'hack',],[3,7,'suck'],[4,8,'make'],[5,9,'kack']]),
+            $collection1->zip(
+            [5, 6, 7, 8, 9],
+            ['quak','hack','suck','make','kack']));
+
     }
 
     function getTestItems() {

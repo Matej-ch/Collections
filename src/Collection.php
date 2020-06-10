@@ -38,10 +38,9 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
-    /** @TODO extent funkcionality, multiple collections*/
-    public function zip($collection2): Collection
+    public function zip(...$arrays): Collection
     {
-        return new static(array_map(null,$this->items,$collection2->items));
+        return new static(array_map(null,$this->items,...$arrays));
     }
 
     public function flatten(): Collection
