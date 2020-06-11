@@ -157,6 +157,22 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
+    public function search($value, $strict = false)
+    {
+        foreach ($this->items as $key => $item) {
+            if($strict) {
+                if($item == $value) {
+                    return $key;
+                }
+            } elseif($item === $value) {
+                return $key;
+            }
+
+        }
+
+        return false;
+    }
+
     public function reverse(): Collection
     {
         return new static(array_reverse($this->items));
