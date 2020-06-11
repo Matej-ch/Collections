@@ -167,6 +167,12 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
         return new static($this->items);
     }
+  
+    public function chunk($size): Collection
+    {
+        return new static(array_chunk($this->items,$size));
+
+    }
 
     public function search($value, $strict = false)
     {
