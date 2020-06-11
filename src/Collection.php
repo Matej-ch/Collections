@@ -128,9 +128,13 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
         return new static($items);
     }
 
-    public function filter($callback): Collection
+    public function filter($callback, $preserveKeys = true): Collection
     {
-        return new static(array_filter($this->items,$callback));
+        if($preserveKeys) {
+            return new static(array_filter($this->items,$callback));
+        }
+
+        return new static(array_values(array_filter($this->items,$callback)));
     }
 
     public function reject($callback): Collection
