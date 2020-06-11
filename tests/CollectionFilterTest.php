@@ -4,7 +4,7 @@
 use App\Collection;
 use PHPUnit\Framework\TestCase;
 
-class ColletionFilterTests extends TestCase
+class CollectionFilterTest extends TestCase
 {
     /** @test */
     public function it_returns_filtered_items_as_collection_without_keys()

@@ -3,7 +3,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-class CollectionSearchTests extends TestCase
+class CollectionSearchTest extends TestCase
 {
     /** @test */
     function it_returns_false_if_value_is_not_in_collection() {
