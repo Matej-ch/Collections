@@ -4,7 +4,7 @@
             <directory>/src</directory>
         </whitelist>
     </filter>
-    <testsuite>
-        <directory>./</directory>
+    <testsuite name="unit">
+        <directory  phpVersion="7.2" phpVersionOperator=">=">./</directory>
     </testsuite>
 </phpunit>
