@@ -157,6 +157,11 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
+    public function chunk($size): Collection
+    {
+        return new static(array_chunk($this->items,$size));
+    }
+
     public function search($value, $strict = false)
     {
         foreach ($this->items as $key => $item) {
