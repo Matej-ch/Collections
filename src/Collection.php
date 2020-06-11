@@ -157,6 +157,17 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     }
 
+    public function forget($key, $preserveKeys = true): Collection
+    {
+        unset($this->items[$key]);
+
+        if(!$preserveKeys) {
+            return new static(array_values($this->items));
+        }
+
+        return new static($this->items);
+    }
+
     public function search($value, $strict = false)
     {
         foreach ($this->items as $key => $item) {
