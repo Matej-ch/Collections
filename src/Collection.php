@@ -3,10 +3,6 @@
 
 namespace App;
 
-
-use Exception;
-use Traversable;
-
 class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private $items;

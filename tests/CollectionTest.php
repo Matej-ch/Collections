@@ -221,14 +221,15 @@ class CollectionTest extends TestCase
     }
 
     /** @test */
-    public function max_returns_maximum_value_for_key_for_collecion_of_simple_arrays()
+    public function max_returns_maximum_value_for_key_for_collection_of_simple_arrays()
     {
         $collection = Collection::make([['id' => 1],['id' =>  2],['id' => 69],['id' =>  3],['id' =>  4],['id' =>  5]]);
 
         $this->assertEquals(69,$collection->max('id'));
     }
 
-    function getTestItems() {
+    private function getTestItems(): array
+    {
         return [
             (object)[
                 'value' => 2,
