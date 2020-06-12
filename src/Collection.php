@@ -152,9 +152,13 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
         return new static(array_sum($this->items));
     }
 
-    public function contains($callback)
+    public function contains($value,$strict = false): bool
     {
+        if(in_array($value,$this->items,$strict)) {
+            return true;
+        }
 
+        return false;
     }
 
     public function forget($key, $preserveKeys = true): Collection
