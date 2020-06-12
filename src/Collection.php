@@ -31,7 +31,7 @@ class Collection implements \ArrayAccess, \Countable, \IteratorAggregate
 
     public function pluck($key)
     {
-
+        return array_column($this->items,$key);
     }
 
     public function max($key)
