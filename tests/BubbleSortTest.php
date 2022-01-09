@@ -2,6 +2,8 @@
 
 namespace tests;
 
+use App\sort\BubbleSort;
+
 class BubbleSortTest extends SortDataProvider
 {
     /**
@@ -12,6 +14,7 @@ class BubbleSortTest extends SortDataProvider
      */
     function it_sorts_array_of_values_from_lowest($sorted,$unsorted) {
 
+        $this->assertEquals($sorted,BubbleSort::sort($unsorted));
     }
 
     /**
