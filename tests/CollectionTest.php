@@ -1,5 +1,6 @@
 <?php
 
+namespace tests;
 
 use App\Collection;
 use PHPUnit\Framework\TestCase;
