@@ -6,7 +6,7 @@ class QuickSortTest extends SortDataProvider
 {
     /**
      * @test
-     * @dataProvider arrays
+     * @dataProvider arraysFromLowest
      * @param $sorted
      * @param $unsorted
      */
@@ -16,7 +16,7 @@ class QuickSortTest extends SortDataProvider
 
     /**
      * @test
-     * @dataProvider arrays
+     * @dataProvider arraysFromHighest
      * @param $sorted
      * @param $unsorted
      */
