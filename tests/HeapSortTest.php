@@ -2,8 +2,11 @@
 
 namespace tests;
 
-class HeapSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class HeapSortTest extends TestCase
 {
+    use SortDataProvider;
     /**
      * @test
      * @dataProvider arraysFromLowest

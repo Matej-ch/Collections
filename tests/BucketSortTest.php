@@ -2,8 +2,12 @@
 
 namespace tests;
 
-class BucketSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class BucketSortTest extends TestCase
 {
+    use SortDataProvider;
+
     /**
      * @test
      * @dataProvider arraysFromLowest

@@ -3,8 +3,12 @@
 namespace tests;
 
 
-class BogoSortTest  extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class BogoSortTest extends TestCase
 {
+    use SortDataProvider;
+
     /**
      * @test
      * @dataProvider arraysFromLowest

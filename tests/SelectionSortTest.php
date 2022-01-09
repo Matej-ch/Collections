@@ -3,8 +3,11 @@
 namespace tests;
 
 
-class SelectionSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class SelectionSortTest extends TestCase
 {
+    use SortDataProvider;
     /**
      * @test
      * @dataProvider arraysFromLowest

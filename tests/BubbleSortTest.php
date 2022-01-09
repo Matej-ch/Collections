@@ -3,9 +3,12 @@
 namespace tests;
 
 use App\sort\BubbleSort;
+use PHPUnit\Framework\TestCase;
 
-class BubbleSortTest extends SortDataProvider
+class BubbleSortTest extends TestCase
 {
+    use SortDataProvider;
+
     /**
      * @test
      * @dataProvider arraysFromLowest

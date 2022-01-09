@@ -2,7 +2,9 @@
 
 namespace tests;
 
-class QuickSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class QuickSortTest extends TestCase
 {
     /**
      * @test

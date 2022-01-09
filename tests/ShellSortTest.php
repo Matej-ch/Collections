@@ -2,8 +2,11 @@
 
 namespace tests;
 
-class ShellSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class ShellSortTest extends TestCase
 {
+    use SortDataProvider;
     /**
      * @test
      * @dataProvider arraysFromLowest

@@ -2,8 +2,11 @@
 
 namespace tests;
 
-class InsertionSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class InsertionSortTest extends TestCase
 {
+    use SortDataProvider;
     /**
      * @test
      * @dataProvider arraysFromLowest

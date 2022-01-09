@@ -3,8 +3,12 @@
 namespace tests;
 
 
-class MergeSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class MergeSortTest extends TestCase
 {
+    use SortDataProvider;
+
     /**
      * @test
      * @dataProvider arraysFromLowest

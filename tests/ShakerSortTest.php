@@ -2,8 +2,11 @@
 
 namespace tests;
 
-class ShakerSortTest extends SortDataProvider
+use PHPUnit\Framework\TestCase;
+
+class ShakerSortTest extends TestCase
 {
+    use SortDataProvider;
     /**
      * @test
      * @dataProvider arraysFromLowest
