@@ -20,12 +20,10 @@ class BubbleSort
                         $data[$j + 1] = $data[$j];
                         $data[$j] = $tmp;
                     }
-                } else {
-                    if($data[$j + 1] > $data[$j]) {
-                        $tmp = $data[$j + 1];
-                        $data[$j + 1] = $data[$j];
-                        $data[$j] = $tmp;
-                    }
+                } elseif($data[$j + 1] > $data[$j]) {
+                    $tmp = $data[$j + 1];
+                    $data[$j + 1] = $data[$j];
+                    $data[$j] = $tmp;
                 }
             }
         }

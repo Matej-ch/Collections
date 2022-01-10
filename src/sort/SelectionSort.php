@@ -14,10 +14,8 @@ class SelectionSort
                     if ($data[$j] < $data[$maxIndex]) {
                         $maxIndex = $j;
                     }
-                } else {
-                    if ($data[$j] > $data[$maxIndex]) {
-                        $maxIndex = $j;
-                    }
+                } elseif ($data[$j] > $data[$maxIndex]) {
+                    $maxIndex = $j;
                 }
             }
             $tmp = $data[$i];
