@@ -14,10 +14,18 @@ class BubbleSort
 
         for($i = 0; $i < $count - 1; $i++) {
             for($j = 0; $j < $count - $i - 1; $j++) {
-                if($data[$j + 1] < $data[$j]) {
-                    $tmp = $data[$j + 1];
-                    $data[$j + 1] = $data[$j];
-                    $data[$j] = $tmp;
+                if($direction === SORT_ASC) {
+                    if($data[$j + 1] < $data[$j]) {
+                        $tmp = $data[$j + 1];
+                        $data[$j + 1] = $data[$j];
+                        $data[$j] = $tmp;
+                    }
+                } else {
+                    if($data[$j + 1] > $data[$j]) {
+                        $tmp = $data[$j + 1];
+                        $data[$j + 1] = $data[$j];
+                        $data[$j] = $tmp;
+                    }
                 }
             }
         }

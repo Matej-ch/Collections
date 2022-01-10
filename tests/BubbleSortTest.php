@@ -15,7 +15,8 @@ class BubbleSortTest extends TestCase
      * @param $sorted
      * @param $unsorted
      */
-    function it_sorts_array_of_values_from_lowest($sorted,$unsorted) {
+    function it_sorts_array_of_values_from_lowest($sorted,$unsorted)
+    {
 
         $this->assertEquals($sorted,BubbleSort::sort($unsorted));
     }
@@ -26,7 +27,8 @@ class BubbleSortTest extends TestCase
      * @param $sorted
      * @param $unsorted
      */
-    function it_sorts_array_of_values_from_highest($sorted,$unsorted) {
-
+    function it_sorts_array_of_values_from_highest($sorted,$unsorted)
+    {
+        $this->assertEquals($sorted,BubbleSort::sort($unsorted,SORT_DESC));
     }
 }
