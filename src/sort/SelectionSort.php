@@ -9,13 +9,22 @@ class SelectionSort
         for ($i = 0; $i < count($data) - 1; $i++) {
             $maxIndex = $i;
             for ($j = $i + 1; $j < count($data); $j++) {
-                if ($data[$j] > $data[$maxIndex]) {
-                    $maxIndex = $j;
+
+                if($direction === SORT_ASC) {
+                    if ($data[$j] < $data[$maxIndex]) {
+                        $maxIndex = $j;
+                    }
+                } else {
+                    if ($data[$j] > $data[$maxIndex]) {
+                        $maxIndex = $j;
+                    }
                 }
             }
             $tmp = $data[$i];
             $data[$i] = $data[$maxIndex];
             $data[$maxIndex] = $tmp;
         }
+
+        return $data;
     }
 }
