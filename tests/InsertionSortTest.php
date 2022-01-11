@@ -2,6 +2,7 @@
 
 namespace tests;
 
+use App\sort\InsertionSort;
 use PHPUnit\Framework\TestCase;
 
 class InsertionSortTest extends TestCase
@@ -13,8 +14,9 @@ class InsertionSortTest extends TestCase
      * @param $sorted
      * @param $unsorted
      */
-    function it_sorts_array_of_values_from_lowest($sorted,$unsorted) {
-
+    function it_sorts_array_of_values_from_lowest($sorted,$unsorted)
+    {
+        $this->assertEquals($sorted,InsertionSort::sort($unsorted));
     }
 
     /**
@@ -23,7 +25,8 @@ class InsertionSortTest extends TestCase
      * @param $sorted
      * @param $unsorted
      */
-    function it_sorts_array_of_values_from_highest($sorted,$unsorted) {
-
+    function it_sorts_array_of_values_from_highest($sorted,$unsorted)
+    {
+        $this->assertEquals($sorted,InsertionSort::sort($unsorted,SORT_DESC));
     }
 }
