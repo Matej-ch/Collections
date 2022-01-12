@@ -4,7 +4,7 @@ namespace App\sort;
 
 class SelectionSort
 {
-    public static function sort($data, $direction = SORT_ASC)
+    public static function sort(array $data, $direction = SORT_ASC): array
     {
         for ($i = 0; $i < count($data) - 1; $i++) {
             $maxIndex = $i;
