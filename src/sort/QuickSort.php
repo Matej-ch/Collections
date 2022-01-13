@@ -6,10 +6,12 @@ class QuickSort
 {
     public static function sort(array $data, $direction = SORT_ASC): array
     {
-        return self::quickSort($data,0,count($data) - 1);
+        self::quickSort($data,0,count($data) - 1);
+
+        return $data;
     }
 
-    private static function quickSort(array $data, int $left, int $right): array
+    private static function quickSort(array &$data, int $left, int $right)
     {
         if ($left < $right) {
             $boundary = $left;
@@ -18,20 +20,16 @@ class QuickSort
                     self::swap($data, $i, ++$boundary);
                 }
             }
-            $data = self::swap($data, $left, $boundary);
+            self::swap($data, $left, $boundary);
             self::quickSort($data, $left, $boundary);
             self::quickSort($data, $boundary + 1, $right);
         }
-
-        return $data;
     }
 
-    private static function swap(array $data, int $left, int $right): array
+    private static function swap(array &$data, int $left, int $right)
     {
         $tmp = $data[$right];
         $data[$right] = $data[$left];
         $data[$left] = $tmp;
-
-        return $data;
     }
 }
