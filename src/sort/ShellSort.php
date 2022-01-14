@@ -2,9 +2,9 @@
 
 namespace App\sort;
 
-class ShellSort
+class ShellSort implements ISort
 {
-    public static function sort(array $data, $direction = SORT_ASC): array
+    public static function sort(array $data,int $direction = SORT_ASC): array
     {
         $gap = count($data) / 2;
 

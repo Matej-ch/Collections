@@ -2,9 +2,9 @@
 
 namespace App\sort;
 
-class SelectionSort
+class SelectionSort implements ISort
 {
-    public static function sort(array $data, $direction = SORT_ASC): array
+    public static function sort(array $data,int $direction = SORT_ASC): array
     {
         for ($i = 0; $i < count($data) - 1; $i++) {
             $maxIndex = $i;
