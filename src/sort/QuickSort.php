@@ -4,32 +4,39 @@ namespace App\sort;
 
 class QuickSort
 {
-    public static function sort(array $data, $direction = SORT_ASC): array
+    public static function sort(array $data,int $direction = SORT_ASC): array
     {
-        self::quickSort($data,0,count($data) - 1);
-
-        return $data;
+        return self::quickSort($data,$direction);
     }
 
-    private static function quickSort(array &$data, int $left, int $right)
+    private static function quickSort(array $data,int $direction): array
     {
-        if ($left < $right) {
-            $boundary = $left;
-            for ($i = $left + 1; $i < $right; $i++) {
-                if ($data[$i] > $data[$left]) {
-                    self::swap($data, $i, ++$boundary);
+        $left = $right = [];
+
+        if(count($data) < 2) {
+            return $data;
+        }
+
+        $pivotKey = key($data);
+        $pivot = array_shift($data);
+
+        foreach($data as $val) {
+
+            if($direction === SORT_ASC) {
+                if($val <= $pivot) {
+                    $left[] = $val;
+                } else {
+                    $right[] = $val;
+                }
+            } else {
+                if($val >= $pivot) {
+                    $left[] = $val;
+                } else {
+                    $right[] = $val;
                 }
             }
-            self::swap($data, $left, $boundary);
-            self::quickSort($data, $left, $boundary);
-            self::quickSort($data, $boundary + 1, $right);
         }
-    }
 
-    private static function swap(array &$data, int $left, int $right)
-    {
-        $tmp = $data[$right];
-        $data[$right] = $data[$left];
-        $data[$left] = $tmp;
+        return array_merge(self::quickSort($left,$direction),[$pivotKey=>$pivot],self::quickSort($right,$direction));
     }
 }
