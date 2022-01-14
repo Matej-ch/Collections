@@ -2,6 +2,7 @@
 
 namespace tests;
 
+use App\sort\ShellSort;
 use PHPUnit\Framework\TestCase;
 
 class ShellSortTest extends TestCase
@@ -13,8 +14,9 @@ class ShellSortTest extends TestCase
      * @param $sorted
      * @param $unsorted
      */
-    function it_sorts_array_of_values_from_lowest($sorted,$unsorted) {
-
+    function it_sorts_array_of_values_from_lowest($sorted,$unsorted)
+    {
+        $this->assertEquals($sorted,ShellSort::sort($unsorted));
     }
 
     /**
@@ -23,7 +25,8 @@ class ShellSortTest extends TestCase
      * @param $sorted
      * @param $unsorted
      */
-    function it_sorts_array_of_values_from_highest($sorted,$unsorted) {
-
+    function it_sorts_array_of_values_from_highest($sorted,$unsorted)
+    {
+        $this->assertEquals($sorted,ShellSort::sort($unsorted,SORT_DESC));
     }
 }
