@@ -4,11 +4,21 @@ namespace App\sort;
 
 class BubbleSort implements ISort
 {
+    public $data;
+
+    public $direction = SORT_ASC;
+
+    public function __construct($data,$direction)
+    {
+        $this->data = $data;
+        $this->direction = $direction;
+    }
+
     public static function sort(array $data,int $direction = SORT_ASC): array
     {
         $count = count($data);
 
-        if($count ===0 || $count === 1) {
+        if($count === 0 || $count === 1) {
             return $data;
         }
 
@@ -30,4 +40,21 @@ class BubbleSort implements ISort
 
         return $data;
     }
+
+    public function steps(int $numberOfSteps)
+    {
+        $count = count($this->data);
+
+        if($count === 0 || $count === 1) {
+            return;
+        }
+
+
+    }
+
+    public function getSorted()
+    {
+        return $this->data;
+    }
+
 }

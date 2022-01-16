@@ -30,4 +30,28 @@ class BubbleSortTest extends TestCase
     {
         $this->assertEquals($sorted,BubbleSort::sort($unsorted,SORT_DESC));
     }
+
+    /**
+     * @test
+     */
+    function it_gets_second_step_of_sorting()
+    {
+
+    }
+
+    /**
+     * @test
+     */
+    function it_gets_fourth_step_of_sorting()
+    {
+
+    }
+
+    /**
+     * @test
+     */
+    function it_gets_last_step_of_sorting()
+    {
+
+    }
 }
