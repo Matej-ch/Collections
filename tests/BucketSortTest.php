@@ -11,7 +11,7 @@ class BucketSortTest extends TestCase
 
     /**
      * @test
-     * @dataProvider arraysFromLowest
+     * @dataProvider arraysIntegerFromLowest
      * @param $sorted
      * @param $unsorted
      */
@@ -22,7 +22,7 @@ class BucketSortTest extends TestCase
 
     /**
      * @test
-     * @dataProvider arraysFromHighest
+     * @dataProvider arraysIntegerFromHighest
      * @param $sorted
      * @param $unsorted
      */

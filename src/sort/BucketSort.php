@@ -13,6 +13,7 @@ class BucketSort
 
         $high = $data[0];
         $low = $data[0];
+
         for ($i = 1; $i < count($data); $i++) {
             if ($data[$i] > $high) {
                 $high = $data[$i];
@@ -32,14 +33,16 @@ class BucketSort
             $buckets[(int)(($data[$i] - $low) / $interval)][] = $data[$i];
         }
 
+
         $pointer = 0;
-        for ($i = 0; $i < count($data); $i++) {
+        for ($i = 0; $i < count($buckets); $i++) {
             sort($buckets[$i]); //mergeSort
             for ($j = 0; $j < count($buckets[$i]); $j++) {
                 $data[$pointer] = $buckets[$i][$j];
                 $pointer++;
             }
         }
+
         return $data;
     }
 }

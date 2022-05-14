@@ -25,4 +25,24 @@ trait SortDataProvider
             [[99],[99]]
         ];
     }
+
+    public function arraysIntegerFromLowest(): array
+    {
+        return [
+            [[],[]],
+            [[1,2,3,4,5,6,7],[7,5,3,1,4,2,6]],
+            [[6,6],[6,6]],
+            [[99],[99]]
+        ];
+    }
+
+    public function arraysIntegerFromHighest(): array
+    {
+        return [
+            [[],[]],
+            [[7,6,5,4,3,2,1],[7,5,3,1,4,2,6]],
+            [[6,6],[6,6]],
+            [[99],[99]]
+        ];
+    }
 }
