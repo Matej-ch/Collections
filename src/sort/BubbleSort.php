@@ -48,8 +48,6 @@ class BubbleSort implements ISort
         if($count === 0 || $count === 1) {
             return;
         }
-
-
     }
 
     public function getSorted()
