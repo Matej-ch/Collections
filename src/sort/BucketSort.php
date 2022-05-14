@@ -33,10 +33,14 @@ class BucketSort
             $buckets[(int)(($data[$i] - $low) / $interval)][] = $data[$i];
         }
 
-
         $pointer = 0;
         for ($i = 0; $i < count($buckets); $i++) {
-            sort($buckets[$i]); //mergeSort
+            if($direction === SORT_ASC) {
+                sort($buckets[$i]);
+            } else {
+                rsort($buckets[$i]);
+            }
+
             for ($j = 0; $j < count($buckets[$i]); $j++) {
                 $data[$pointer] = $buckets[$i][$j];
                 $pointer++;
