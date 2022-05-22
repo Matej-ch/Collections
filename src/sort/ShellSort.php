@@ -4,7 +4,7 @@ namespace App\sort;
 
 class ShellSort implements ISort
 {
-    public static function sort(array $data,int $direction = SORT_ASC): array
+    public static function sort(array $data, int $direction = SORT_ASC): array
     {
         $gap = count($data) / 2;
 
@@ -26,6 +26,10 @@ class ShellSort implements ISort
             } else {
                 $gap = (int)($gap / 2.2);
             }
+        }
+
+        if ($direction === SORT_ASC) {
+            $data = array_reverse($data);
         }
 
         return $data;

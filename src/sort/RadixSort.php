@@ -4,7 +4,7 @@ namespace App\sort;
 
 class RadixSort implements ISort
 {
-    public static function sort(array $data, int $direction = SORT_ASC): array
+    public static function sort(array $data, int $direction = SORT_ASC, int $dimension = 5): array
     {
         // Array for 10 queues.
         $queues = [
@@ -16,7 +16,7 @@ class RadixSort implements ISort
         $longest = 0;
         foreach ($data as $el) {
 
-            if(is_numeric($el)) {
+            if (is_numeric($el)) {
                 $condition = $el > $longest;
             } else {
                 $condition = ord($el) > $longest;
@@ -26,7 +26,7 @@ class RadixSort implements ISort
                 $longest = $el;
             }
 
-            if(is_numeric($el)) {
+            if (is_numeric($el)) {
                 $queues[$el % 10][] = $el;
             } else {
                 $queues[ord($el) % 10][] = $el;
@@ -46,7 +46,7 @@ class RadixSort implements ISort
         $d = 10;
         while ($it--) {
             foreach ($data as $el) {
-                if(is_numeric($el)) {
+                if (is_numeric($el)) {
                     $queues[floor($el / $d) % 10][] = $el;
                 } else {
                     $queues[floor(ord($el) / $d) % 10][] = $el;
@@ -60,6 +60,10 @@ class RadixSort implements ISort
                 }
             }
             $d *= 10;
+        }
+
+        if ($direction === SORT_DESC) {
+            $data = array_reverse($data);
         }
 
         return $data;

@@ -7,7 +7,7 @@ class HeapSort implements ISort
     public static function sort(array $data, int $direction = SORT_ASC): array
     {
         for ($i = count($data) / 2 - 1; $i >= 0; $i--) {
-            self::repairTop($data, count($data) - 1, $i, $direction === SORT_DESC ? 1 : -1);
+            $data = self::repairTop($data, count($data) - 1, $i, $direction === SORT_DESC ? 1 : -1);
         }
 
         for ($i = count($data) - 1; $i > 0; $i--) {
@@ -17,6 +17,9 @@ class HeapSort implements ISort
             $data = self::repairTop($data, $i - 1, 0, $direction === SORT_DESC ? 1 : -1);
         }
 
+        if ($direction === SORT_ASC) {
+            $data = array_reverse($data);
+        }
         return $data;
     }
 
